@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Box</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="header-container">
+        <div id="image-container">
+            <img src="assets/Logo.png" id="logo">
+            <h1 id="logo-type">FILM BOX</h1>
+        </div>
+        <nav id="header-list">
+            <a href="review.html"><li class="header-item">Reviews</li></a>
+            <li class="header-item">Watched</li>
+            <li class="header-item">Members</li>
+        </nav>
+    </header>
+    <section id="search-container">
+        <input id="search-bar" placeholder="Search a movie" type="text">
+        <button id="submit-button">🔍</button>
+    </section>
+    <main id="main-container">
+        <h2 class="media-type">Popular Anime:</h2>
+        <section class="display-container">
+            <section id="anime-container">
+                <div id="anime-display"></div>
+            </section>
+        </section>
+        <h2 class="media-type">Popular Movies:</h2>
+        <section class="display-container">
+            <section id="movie-container">
+                <div id="movie-display"></div>
+            </section>
+        </section>
+    </main>
+     <section id="recent-container">
+        <h3>Recently watched</h3>
+        <hr>
+            <div id=recent-display>
+                <div class="recent-card">1</div>
+                <div class="recent-card">2</div>
+                <div class="recent-card">3</div>
+            </div>
+        </section>
+        <footer id="footer-container">
+
+        </footer>
+    <script src="keys.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
