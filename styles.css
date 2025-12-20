@@ -89,6 +89,14 @@ body {
     background-color: #F4F4C9;
 }
 
+#media-type {
+    background-color: #894c2c;
+    color: #F4F4C9;
+    font-weight: bold;
+    margin-right: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
 
 
 
@@ -180,8 +188,9 @@ body {
 }
 
 .card-display {
-    height: 80vh;
-    width: 85vw;
+    height: min-content;
+    padding: 40px;
+    width: 80vw;
     background-color: rgba(35, 45, 58, 0.7);
     backdrop-filter: blur(10px);
     border: 1PX solid #F4F4C9;
@@ -201,7 +210,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    width: 85%;
+    width: 90%;
     height: min-content;
     padding-top: 15px;
     background-color: rgba(53, 62, 56, 0.6);
@@ -211,13 +220,13 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 30%;
+    width: 20%;
     margin-bottom: 120px;
     
 }
 
 #popup-image-container h1 {
-    font-size: 2.8rem;
+    font-size: 2rem;
     color: #F4F4C9;
     margin-bottom: 20px;
 }
@@ -275,6 +284,7 @@ body {
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    margin-bottom: 20px;
  }
 
   #buttons-container button:hover {

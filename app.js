@@ -8,7 +8,9 @@ const imageSize = 'w200';
 const movieDisplay = document.querySelector('#movie-display');
 const animeDisplay = document.querySelector('#anime-display');
 const mainContainer = document.querySelector('#main-container');
-
+const searchBar = document.querySelector('#search-bar');
+const searchButton = document.querySelector('#submit-button');
+const searchType = document.querySelector('#media-type');
 
 async function getMovieData() {
     try {
@@ -59,46 +61,93 @@ getAnimeData();
 
 const animeDataStorage = [];
 
-async function displayAnimeData() {
-    const data = await getAnimeData();
-    const animeList = data.data;
+async function displayAnimeData(data) {
 
-    animeList.forEach((anime) => {
-        const animeObject = {};
+    if (!data) {
+        const data = await getAnimeData();
+        const animeList = data.data;
 
-        animeObject.title = anime.title;
-        animeObject.desc = anime.background;
-        animeObject.image = anime.images.jpg.image_url;
-        animeObject.year = anime.year;
-        animeObject.genre = anime.genres[0].name;
-        animeObject.id = anime.mal_id;
+        animeList.forEach((anime) => {
+            const animeObject = {};
 
-        animeDataStorage.push(animeObject);
+            animeObject.title = anime.title;
+            animeObject.desc = anime.background;
+            animeObject.image = anime.images.jpg.image_url;
+            animeObject.year = anime.year;
+            animeObject.genre = anime.genres[0].name;
+            animeObject.id = anime.mal_id;
 
-        const newDiv = document.createElement('div');
-        newDiv.id = animeObject.id;
-        newDiv.classList.add("anime-card");
-        const imageEl = document.createElement('img');
-        const title = document.createElement('p');
-        imageEl.src = animeObject.image;
-        title.textContent = animeObject.title;
+            animeDataStorage.push(animeObject);
 
-        newDiv.appendChild(imageEl);
-        newDiv.appendChild(title);
+            const newDiv = document.createElement('div');
+            newDiv.id = animeObject.id;
+            newDiv.classList.add("anime-card");
+            const imageEl = document.createElement('img');
+            const title = document.createElement('p');
+            imageEl.src = animeObject.image;
+            title.textContent = animeObject.title;
 
-        animeDisplay.appendChild(newDiv);
+            newDiv.appendChild(imageEl);
+            newDiv.appendChild(title);
 
-    });
+            animeDisplay.appendChild(newDiv);
 
-    const animeCard = document.querySelectorAll('.anime-card');
+            const animeCard = document.querySelectorAll('.anime-card');
 
-    animeCard.forEach((div) => {
-        div.addEventListener('click', () => {
-            const animeId = div.id;
-            displayAnimeInfo(animeId);
-        });
+            animeCard.forEach((div) => {
+                div.addEventListener('click', () => {
+                    const animeId = div.id;
+                    displayAnimeInfo(animeId);
+                });
 
-    })
+            })
+
+        })
+
+    } else {
+
+        const animeList = data.data;
+
+        animeDisplay.innerHTML = "";
+
+        animeList.forEach((anime) => {
+            const animeObject = {};
+
+            animeObject.title = anime.title;
+            animeObject.desc = anime.background;
+            animeObject.image = anime.images.jpg.image_url;
+            animeObject.year = anime.year;
+            animeObject.genre = anime.genres[0].name;
+            animeObject.id = anime.mal_id;
+
+            animeDataStorage.push(animeObject);
+
+            const newDiv = document.createElement('div');
+            newDiv.id = animeObject.id;
+            newDiv.classList.add("anime-card");
+            const imageEl = document.createElement('img');
+            const title = document.createElement('p');
+            imageEl.src = animeObject.image;
+            title.textContent = animeObject.title;
+
+            newDiv.appendChild(imageEl);
+            newDiv.appendChild(title);
+
+            animeDisplay.appendChild(newDiv);
+
+            const animeCard = document.querySelectorAll('.anime-card');
+
+            animeCard.forEach((div) => {
+                div.addEventListener('click', () => {
+                    const animeId = div.id;
+                    displayAnimeInfo(animeId);
+                })
+
+            })
+
+        })
+
+    }
 }
 
 
@@ -107,46 +156,90 @@ displayAnimeData();
 
 const movieDataStorage = [];
 
-async function displayMovieData() {
-    const data = await getMovieData();
-    const limitData = data.results.splice(0, 5);
-    console.log(limitData);
-    const movieList = limitData;
+async function displayMovieData(dataSliced) {
 
-    movieList.forEach((movie) => {
-        const movieImage = `${imageBaseUrl}${imageSize}${movie.backdrop_path}`;
-        const movieObject = {};
+    if (!dataSliced) {
 
-        movieObject.title = movie.title;
-        movieObject.image = movieImage;
-        movieObject.desc = movie.overview;
-        movieObject.id = movie.id;
-        movieObject.release = movie.release_date;
+        const data = await getMovieData();
+        const limitData = data.results.splice(0, 5);
+        console.log(limitData);
+        const movieList = limitData;
 
-        movieDataStorage.push(movieObject);
+        movieList.forEach((movie) => {
+            const movieImage = `${imageBaseUrl}${imageSize}${movie.backdrop_path}`;
+            const movieObject = {};
 
-        const newDiv = document.createElement('div');
-        newDiv.classList.add("movie-card");
-        newDiv.id = movieObject.id;
-        const imageEl = document.createElement('img');
-        imageEl.src = movieImage;
-        const title = document.createElement('p');
-        title.textContent = movie.title;
+            movieObject.title = movie.title;
+            movieObject.image = movieImage;
+            movieObject.desc = movie.overview;
+            movieObject.id = movie.id;
+            movieObject.release = movie.release_date;
 
-        newDiv.appendChild(imageEl);
-        newDiv.appendChild(title);
+            movieDataStorage.push(movieObject);
 
-        movieDisplay.appendChild(newDiv);
-    });
+            const newDiv = document.createElement('div');
+            newDiv.classList.add("movie-card");
+            newDiv.id = movieObject.id;
+            const imageEl = document.createElement('img');
+            imageEl.src = movieImage;
+            const title = document.createElement('p');
+            title.textContent = movie.title;
 
-    const movieCard = document.querySelectorAll(".movie-card");
+            newDiv.appendChild(imageEl);
+            newDiv.appendChild(title);
 
-    movieCard.forEach(movie => {
-        movie.addEventListener('click', () => {
-            const movieId = movie.id;
-            displayMovieInfo(movieId);
+            movieDisplay.appendChild(newDiv);
+
         });
-    });
+        const movieCard = document.querySelectorAll(".movie-card");
+
+        movieCard.forEach(movie => {
+            movie.addEventListener('click', () => {
+                const movieId = movie.id;
+                displayMovieInfo(movieId);
+            });
+        });
+    } else {
+        const movieList = dataSliced;
+
+        movieDisplay.innerHTML = "";
+
+        movieList.forEach((movie) => {
+            const movieImage = `${imageBaseUrl}${imageSize}${movie.backdrop_path}`;
+            const movieObject = {};
+
+            movieObject.title = movie.title;
+            movieObject.image = movieImage;
+            movieObject.desc = movie.overview;
+            movieObject.id = movie.id;
+            movieObject.release = movie.release_date;
+
+            movieDataStorage.push(movieObject);
+
+            const newDiv = document.createElement('div');
+            newDiv.classList.add("movie-card");
+            newDiv.id = movieObject.id;
+            const imageEl = document.createElement('img');
+            imageEl.src = movieImage;
+            const title = document.createElement('p');
+            title.textContent = movie.title;
+
+            newDiv.appendChild(imageEl);
+            newDiv.appendChild(title);
+
+            movieDisplay.appendChild(newDiv);
+
+        });
+        const movieCard = document.querySelectorAll(".movie-card");
+
+        movieCard.forEach(movie => {
+            movie.addEventListener('click', () => {
+                const movieId = movie.id;
+                displayMovieInfo(movieId);
+            });
+        });
+
+    }
 };
 
 displayMovieData();
@@ -209,7 +302,8 @@ console.log(movieDataStorage);
 
 
 
-function displayAnimeInfo(animeId) {
+async function displayAnimeInfo(animeId) {
+
     const popUpExist = document.querySelector('.card-display');
 
     const animeObject = animeDataStorage.find((anime) => anime.id === Number((animeId)));
@@ -247,19 +341,20 @@ function displayAnimeInfo(animeId) {
         const popUpCloseButton = document.getElementById('popup-close-button');
         popUpCloseButton.addEventListener('click', () => {
             popUp.style.display = "none";
-        })
+        });
+
     } else {
 
         const animeTitle = document.getElementById('popup-title');
         const animeImg = document.getElementById('popup-image');
         const animeDesc = document.getElementById('popup-desc');
         const animeYear = document.getElementById('pop-year');
-        const animeGenre = document.getElementById("pop-genre")
+        const animeGenre = document.getElementById('pop-genre')
         const newPopUp = document.querySelector('.card-display');
 
         animeTitle.textContent = animeObject.title;
         animeImg.src = animeObject.image;
-        animeDesc.textContent = animeObject.desc;
+        animeDesc.textContent = animeObject.desc || "no description available";
         animeYear.textContent = `Year: ${animeObject.release || "no year available"}`;
         animeGenre.textContent = animeObject.genre;
 
@@ -268,4 +363,67 @@ function displayAnimeInfo(animeId) {
     }
 };
 
+function getSearchMedia() {
+    searchButton.addEventListener('click', () => {
+        const userInput = searchBar.value;
 
+
+        if (searchType.value === "Anime") {
+            const params = new URLSearchParams();
+            params.append('q', userInput);
+            params.append('limit', '5');
+
+            async function userAnimeSearch() {
+                try {
+                    const animeUrlSearch = `https://api.jikan.moe/v4/anime?${params.toString()}`;
+
+                    const response = await fetch(animeUrlSearch);
+
+                    if (!response.ok) {
+                        throw new Error(` HTTP response error ${response.status}`)
+                    }
+
+                    const data = await response.json();
+                    console.log(data);
+                    return displayAnimeData(data);
+
+                } catch (error) {
+                    console.error("there was a fetch error", error);
+                }
+            }
+            userAnimeSearch();
+        } else {
+
+            async function userMovieSearch() {
+                const params = new URLSearchParams();
+                params.append('query', userInput);
+
+                try {
+
+                    const movieUrlSearch = `https://api.themoviedb.org/3/search/movie?${params.toString()}`;
+
+                    const response = await fetch(movieUrlSearch, {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${accessToken}`,
+                            'Content-Type': 'application/json'
+                        }
+                    });
+                    if (!response.ok) {
+                        throw new Error(` HTTP response error ${response.status}`)
+                    }
+
+                    const data = await response.json();
+                    const dataSliced = data.results.slice(0, 5);
+                    return displayMovieData(dataSliced);
+
+                } catch (error) {
+                    console.error("there was a fetch error", error);
+                }
+            }
+            userMovieSearch();
+        }
+    });
+};
+
+getSearchMedia();
