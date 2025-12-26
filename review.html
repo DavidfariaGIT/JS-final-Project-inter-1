@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Film Box - Reviews</title>
     <link rel="stylesheet" href="review.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
-    <h1>THIS IS THE REVIEW PAGE</h1>
+    <main id="main-container">
+        <div id="display-reivew-container">
+            <h1>Reviews</h1>
+            <hr>
+            <section id="leave-review-container">
+                <div id="poster-img-container">
+                    <img id="poster-img" src="">
+                </div>
+                <div id="review-text-container">
+                    <h2 id="media-title">Movie Title</h2>
+                    <div>
+                        <label id="date-label">watched on:
+                            <input id="date-picker" type="date">
+                        </label>
+                    </div>
+                    <textarea id="review-box" placeholder="Leave a review"></textarea>
+                    <label id="user-label">Review by: 
+                    <select id="user-select">
+                        <option value="David">David</option>
+                        <option value="Audrey">Audrey</option>
+                    </select>
+                    </label>
+                </div>
+            </section>
+            <div id="star-rating-section">
+                <div id="star-container">
+                    <label id="stars-rating-label">Rating:
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </label>
+                </div>
+            </div>
+            <div id="save-button-container">
+                <button id="save-button">Save</button>
+            </div>
+            <a href="watched.html"><button>Watched</button></a>
+            <a href="index.html"><button>Home</button></a>
+        </div>
+
+
+    </main>
+    <script src="review.js"></script>
 </body>
+
 </html>

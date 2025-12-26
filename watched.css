@@ -1,0 +1,21 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color:  #2A2D32;
+    color: #F4F4C9;
+}
+
+.review-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30vw;
+}
+
+#main-container { 
+    display: flex;
+    gap: 30px
+}

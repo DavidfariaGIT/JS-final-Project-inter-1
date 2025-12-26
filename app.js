@@ -12,6 +12,10 @@ const searchBar = document.querySelector('#search-bar');
 const searchButton = document.querySelector('#submit-button');
 const searchType = document.querySelector('#media-type');
 
+
+
+
+//original Fetch functions 
 async function getMovieData() {
     try {
         const response = await fetch(url, {
@@ -59,6 +63,10 @@ async function getAnimeData() {
 getAnimeData();
 
 
+
+
+
+//Display functions 
 const animeDataStorage = [];
 
 async function displayAnimeData(data) {
@@ -274,6 +282,11 @@ function displayMovieInfo(movieId) {
         popUp.appendChild(popUpContainer);
         mainContainer.appendChild(popUp);
 
+         const reviewButtonHandler = document.getElementById('popup-review-button');
+        reviewButtonHandler.addEventListener('click', () => {
+            localStorage.setItem("selectedMedia", JSON.stringify(movieObject));
+        });
+
 
         const popUpCloseButton = document.getElementById('popup-close-button');
         popUpCloseButton.addEventListener('click', () => {
@@ -292,6 +305,7 @@ function displayMovieInfo(movieId) {
         movieDesc.textContent = movieObject.desc;
         movieYear.textContent = `Year: ${movieObject.release || "no year available"}`;
 
+        
         newPopUp.style.display = "";
     }
 };
@@ -337,6 +351,11 @@ async function displayAnimeInfo(animeId) {
         popUp.appendChild(popUpContainer);
         mainContainer.appendChild(popUp);
 
+        const reviewButtonHandler = document.getElementById('popup-review-button');
+        reviewButtonHandler.addEventListener('click', () => {
+            localStorage.setItem("selectedMedia", JSON.stringify(animeObject));
+        });
+
 
         const popUpCloseButton = document.getElementById('popup-close-button');
         popUpCloseButton.addEventListener('click', () => {
@@ -363,6 +382,10 @@ async function displayAnimeInfo(animeId) {
     }
 };
 
+
+
+
+//Search button functions 
 function getSearchMedia() {
     searchButton.addEventListener('click', () => {
         const userInput = searchBar.value;
@@ -427,3 +450,6 @@ function getSearchMedia() {
 };
 
 getSearchMedia();
+
+
+

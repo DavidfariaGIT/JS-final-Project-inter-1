@@ -1,8 +1,147 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
 
 body {
     background-color: #2A2D32;
+}
+
+#main-container {
+    width: 100dvw;
+    height: 100vh;
+
+}
+
+#display-reivew-container {
+    background-color: rgba(35, 45, 58, 0.7);
+    width: 90%;
+    height: 100%;
+    margin: auto;
+}
+
+
+#display-reivew-container h1 {
+    color: #894c2c;
+    text-align: center;
+    padding-top: 25px;
+}
+
+#display-reivew-container hr {
+    background-color: #F4F4C9;
+    width: 80%;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+#leave-review-container {
+    background-color: #879d8f;
+    width: 95%;
+    height: 60%;
+    display: flex;
+    margin: auto;
+    color: #F4F4C9;
+    margin-top: 10px;
+    border-radius: 5px 5px 0px 0px;
+    margin-top: 50px;
+
+}
+
+#poster-img-container {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#poster-img-container #poster-img {
+    background-color: #2A2D32;
+    width: 65%;
+    height: min-content;
+    margin-top: 50px;
+    border: 0.5px solid ghostwhite;
+}
+
+#review-text-container {
+    width: 70%;
+    height: 100%;
+    padding: 35px;
+    padding-top: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#date-label {
+    color: #F4F4C9;
+}
+
+#date-picker {
+    background-color: rgba(35, 45, 58, 0.7);
+    color: #879d8f;
+}
+
+textarea {
+    height: 70%;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(35, 45, 58, 0.7);
+    color: #879d8f;
+    font-size: 1rem;
+}
+
+
+#star-rating-section {
+    width: 95%;
+    height: 5%;
+    background-color: #879d8f;
+    margin: auto;
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+#stars-rating-label {
+    color: #2A2D32;
+    font-size: 1rem;
+}
+
+.fa-star {
+    color: #894c2c;
+}
+
+.checked {
+    color: #F4F4C9;
+}
+
+
+#save-button-container {
+    display: flex;
+    padding-top: 10px;
+}
+
+#save-button {
+    background-color: #894c2c;
+    color: #F4F4C9;
+    padding: 10px 35px 10px 35px;
+    border-style: none;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#save-button:hover {
+    background-color: #F4F4C9;
+    color: #894c2c;
+}
+
+#user-select {
+    background-color: rgba(35, 45, 58, 0.7);
+    color: #879d8f;
 }
