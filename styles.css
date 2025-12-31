@@ -15,7 +15,7 @@ body {
 
 /* HEADER */
 #header-container {
-    width: 100vw;
+    width: 100%;
     height: 80px;
     background-color: #2A2D32;
     display: flex;
@@ -24,13 +24,13 @@ body {
 
 #header-list {
     display: flex;
-    width: 60vw;
-    justify-content: space-around;
+    width: 80%;
+    justify-content: end;
     list-style: none;
     padding-top: 20px;
-    padding-left: 50px;
     padding-bottom: 10px;
     color: #879d8f;
+    padding-right: 70px;
 }
 
 #header-list .header-item {
@@ -46,6 +46,7 @@ body {
 
 #image-container #logo-type {
     color: #F4F4C9;
+    font-size: 1.5rem;
 }
 
 #image-container #logo {
@@ -60,7 +61,7 @@ body {
     flex-direction: row;
     justify-content: center;
     margin-top: 50px;
-    width: 100vw;
+    width: 100%;
 
 }
 
@@ -93,11 +94,10 @@ body {
     background-color: #894c2c;
     color: #F4F4C9;
     font-weight: bold;
-    margin-right: 20px;
-    border-radius: 5px;
-    padding: 10px;
-}
+    padding: 5px;
+    margin-right: 10px;
 
+}
 
 
 /* MAIN */
@@ -108,11 +108,11 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 10px;
+
 }
 
 #main-container .display-container {
-    width: 70%;
+    width: min-content;
     height: auto;
     margin: auto;
     background-color: #879d8f;
@@ -126,7 +126,7 @@ body {
 
 #main-container .media-type {
     color: #F4F4C9;
-    margin-left: 4rem;
+    text-align: center;
     margin-top: 2rem;
 }
 
@@ -214,7 +214,7 @@ body {
     height: min-content;
     padding-top: 15px;
     background-color: rgba(53, 62, 56, 0.6);
-} 
+}
 
 #popup-image-container {
     display: flex;
@@ -222,7 +222,7 @@ body {
     text-align: center;
     width: 20%;
     margin-bottom: 120px;
-    
+
 }
 
 #popup-image-container h1 {
@@ -254,19 +254,19 @@ body {
     width: max-content;
 }
 
- #genre-container {
+#genre-container {
     display: flex;
     align-items: center;
     gap: 20px;
- }
+}
 
-  #genre-container #genre-label {
+#genre-container #genre-label {
     color: #232d3a;
     font-weight: bold;
     font-size: 1.2rem;
- }
+}
 
- #buttons-container {
+#buttons-container {
     display: flex;
     color: red;
     justify-content: center;
@@ -274,9 +274,9 @@ body {
     gap: 90px;
     margin-top: 25px;
     height: 10%;
- } 
+}
 
- #buttons-container button {
+#buttons-container button {
     background-color: #894c2c;
     color: #F4F4C9;
     padding: 10px 25px 10px 25px;
@@ -285,13 +285,13 @@ body {
     font-weight: bold;
     cursor: pointer;
     margin-bottom: 20px;
- }
+}
 
-  #buttons-container button:hover {
+#buttons-container button:hover {
     background-color: #F4F4C9;
-    color:  #894c2c ;
-   
- }
+    color: #894c2c;
+
+}
 
 /* RECENT */
 
@@ -299,6 +299,8 @@ body {
     background-color: #2A2D32;
     padding: 20px;
     height: 400px;
+    padding-bottom: 100px;
+    width: 97.5%;
 
 }
 
@@ -316,14 +318,44 @@ body {
 #recent-display {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
+
 }
 
 .recent-card {
-    background-color: #894c2c;
-    width: 30%;
-    height: 300px;
+    background-color: #232d3a;
+    width: min-content;
+    padding: 10px;
+    padding-left: 60px;
+    padding-right: 60px;
     margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid #879d8f;
+}
+
+
+.recent-card img {
+    width: 180px;
+    margin: 10px;
+}
+
+.recent-card p {
+    text-align: center;
+    margin: 5px;
+    color: #F4F4C9
+}
+
+.recent-card #recent-button {
+    background-color: #894c2c;
+    color: #F4F4C9;
+    padding: 5px;
+    border-radius: 5px;
+    border-style: none;
+    margin-left: 70px;
+    margin-top: 10px;
 }
 
 .recent-card:hover {
@@ -338,4 +370,99 @@ body {
     bottom: 0px;
     background-color: rgba(35, 45, 58, 0.7);
     backdrop-filter: blur(10px);
+}
+
+
+
+
+
+
+@media screen and (min-width: 1501px) {
+
+    #anime-display {
+        display: flex;
+        margin-top: 10px;
+        gap: 15px;
+    }
+
+    .anime-card {
+        width: 180px;
+    }
+
+
+}
+
+@media screen and (max-width: 1500px) {
+
+    #anime-display {
+        display: flex;
+        gap: 30px;
+        margin-top: 10px;
+    }
+
+    .movie-card {
+        width: 180px;
+
+    }
+
+    .movie-card img {
+        width: 180px;
+
+    }
+
+    #image-container #logo-type {
+        font-size: 1.5rem;
+    }
+
+
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+    #anime-display {
+        display: flex;
+        gap: 20px;
+        margin-top: 10px;
+    }
+
+    .anime-card {
+        width: 80px;
+    }
+
+    .anime-card p {
+        display: none;
+    }
+
+    .movie-card {
+        width: 110px;
+
+    }
+
+    .movie-card img {
+        width: 110px;
+
+    }
+
+    .movie-card p {
+        display: none;
+    }
+
+    .recent-card {
+        width: 100px;
+    }
+
+    .recent-card img {
+        width: 90px;
+    }
+
+    .recent-card p {
+        font-size: 0.9rem;
+    }
+
+    .recent-card #recent-button {
+        margin-left: 20px;
+    }
+
 }

@@ -1,6 +1,7 @@
 body, html {
     margin: 0px;
     padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -8,14 +9,63 @@ body {
     color: #F4F4C9;
 }
 
-.review-container {
+h1 {
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    width: 30vw;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color:#894c2c;
+    font-size: 2.4rem;
+}
+
+hr {
+    background-color: #F4F4C9;   
+    width: 100%; 
+}
+
+.review-container {
+    width: 70%;
+    height: min-content;
+    padding: 20px;
+    background-color: rgba(35, 45, 58, 0.7);  
+    border: 1px solid  rgba(244, 244, 201, 0.5);
+}
+
+.review-container #title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#content-container {
+    display: flex;
+    align-items: center;
 }
 
 #main-container { 
     display: flex;
-    gap: 30px
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;   
+    padding-bottom: 30px; 
+}
+
+#title-container {
+    padding-bottom: 5px;
+}
+
+#info-container {
+    width: 70%;
+}
+
+#info-container #review-on{
+    color:#894c2c;
+}
+
+#image-container {
+    width: 20%;
+
+}
+
+#image-container img {
+    width: 50%;
 }

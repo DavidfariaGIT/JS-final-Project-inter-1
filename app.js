@@ -1,3 +1,7 @@
+const reviewedListDavid = JSON.parse(localStorage.getItem("reviewListDavid"));
+const reviewedListAudrey = JSON.parse(localStorage.getItem("reviewListAudrey"));
+
+
 
 const url = 'https://api.themoviedb.org/3/movie/popular?limit=5';
 const animeUrl = "https://api.jikan.moe/v4/anime?limit=5";
@@ -282,7 +286,7 @@ function displayMovieInfo(movieId) {
         popUp.appendChild(popUpContainer);
         mainContainer.appendChild(popUp);
 
-         const reviewButtonHandler = document.getElementById('popup-review-button');
+        const reviewButtonHandler = document.getElementById('popup-review-button');
         reviewButtonHandler.addEventListener('click', () => {
             localStorage.setItem("selectedMedia", JSON.stringify(movieObject));
         });
@@ -305,7 +309,7 @@ function displayMovieInfo(movieId) {
         movieDesc.textContent = movieObject.desc;
         movieYear.textContent = `Year: ${movieObject.release || "no year available"}`;
 
-        
+
         newPopUp.style.display = "";
     }
 };
@@ -453,3 +457,39 @@ getSearchMedia();
 
 
 
+//recent 
+const recentDisplay = document.querySelector("#recent-display");
+
+function displayRecent(reviewListDavid, reviewedListAudrey) {
+    reviewedMedia = reviewListDavid;
+
+    if (!reviewListDavid) {
+        const reviewedMedia = reviewedListAudrey;
+    }
+
+    reviewedMedia.forEach(review => {
+        reviewObject = {};
+
+        const recentCard = document.createElement('div');
+        recentCard.classList.add("recent-card");
+
+
+        reviewObject.title = review.title;
+        reviewObject.poster = review.poster;
+        reviewObject.reviewBy = review.reviewBy;
+
+        recentCard.innerHTML = `
+        <p id="title">${reviewObject.title}</p>
+        <img src="${reviewObject.poster}">
+        <p>Reviewed by:  <strong>${reviewObject.reviewBy}</strong></p>
+        <a href="watched.html"><button id="recent-button">See review<button</a>
+    
+        `
+
+        recentDisplay.appendChild(recentCard);
+
+    })
+
+}
+
+displayRecent(reviewedListDavid, reviewedListAudrey);

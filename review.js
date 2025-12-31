@@ -30,6 +30,7 @@ let audreyReviews = [];
 
 if (reviewedListAudrey !== "no reviews yet") {
     audreyReviews = reviewedListAudrey;
+    console.log(audreyReviews);
 }
 
 if (reviewedListDavid !== "no reviews yet") {
