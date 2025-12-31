@@ -3,6 +3,7 @@ const reviewedListAudrey = JSON.parse(localStorage.getItem("reviewListAudrey"));
 
 
 const mainContainer = document.getElementById('main-container');
+const clearButton = document.querySelector('#clear');
 
 function displayWatched(reviewListDavid, reviewedListAudrey) {
     reviewedMedia = reviewListDavid;
@@ -57,3 +58,9 @@ function displayWatched(reviewListDavid, reviewedListAudrey) {
 
 displayWatched(reviewedListAudrey);
 displayWatched(reviewedListDavid);
+
+
+clearButton.addEventListener("click", () => {
+    localStorage.clear();
+    mainContainer.innerHTML = "";
+});

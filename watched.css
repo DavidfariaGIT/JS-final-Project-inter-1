@@ -70,3 +70,15 @@ hr {
     width: 50%;
 }
 
+#clear-container {
+    display: flex;
+    justify-content: center;
+}
+
+#clear {
+    background-color: #F4F4C9;
+    color: #894c2c;
+    padding: 10px 40px 10px 40px;
+    border-radius: 5px;
+    margin: 40px;
+}
